@@ -62,7 +62,7 @@ export default function AIInvoicingPage() {
               </div>
 
               <h1 className="text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
-               Create invoices before you even blink.
+               Create invoices before you even blink   aaaaaa.
               </h1>
 
               <p className="text-white/80 text-lg leading-relaxed mb-8">
