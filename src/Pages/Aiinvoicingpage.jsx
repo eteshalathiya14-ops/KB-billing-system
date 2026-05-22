@@ -1,6 +1,6 @@
 import { Bot, Zap, Shield, TrendingUp, ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Aiinvoice from "../assets/fetures/aiinvoice.png";
+import Aiinvoice from "../assets/fetures/Aiinvoice.png";
 
 const accent      = "#7C3AED";
 const accentLight = "#F3E8FF";
