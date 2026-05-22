@@ -1,0 +1,24 @@
+{
+  "name": "KB Billing - GST Billing Software India",
+  "short_name": "KB Billing",
+  "description": "India's #1 GST billing software for small businesses. AI invoicing, inventory, WhatsApp & cloud sync.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#633CDD",
+  "orientation": "portrait-primary",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "categories": ["business", "finance", "productivity"],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "KB Billing Dashboard"
+    }
+  ]
+}

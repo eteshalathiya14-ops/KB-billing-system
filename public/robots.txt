@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /src/
+Disallow: /.git/
+Disallow: /node_modules/
+
+Sitemap: https://www.kbbilingsystem.com/sitemap.xml
+
+Crawl-delay: 5
