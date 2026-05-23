@@ -27,11 +27,27 @@ jobs:
         run: zip -r build.zip ./dist
 
       - name: Upload to Google Drive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
-          filename: build.zip
-          folderId: ${{ secrets.GDRIVE_FOLDER_ID }}
-          name: kbbillingapp-build.zip
-          overwrite: "true"
-          encoding: base64
+        run: |
+          pip install google-auth google-auth-oauthlib google-api-python-client
+          python3 - <<'EOF'
+          import json, base64, os
+          from google.oauth2 import service_account
+          from googleapiclient.discovery import build
+          from googleapiclient.http import MediaFileUpload
+
+          creds_b64 = os.environ['GDRIVE_CREDENTIALS']
+          creds_json = json.loads(base64.b64decode(creds_b64).decode('utf-8'))
+          credentials = service_account.Credentials.from_service_account_info(
+              creds_json, scopes=['https://www.googleapis.com/auth/drive'])
+          service = build('drive', 'v3', credentials=credentials)
+          file_metadata = {
+              'name': 'kbbillingapp-build.zip',
+              'parents': [os.environ['GDRIVE_FOLDER_ID']]
+          }
+          media = MediaFileUpload('build.zip', mimetype='application/zip')
+          service.files().create(body=file_metadata, media_body=media).execute()
+          print("Upload successful!")
+          EOF
+        env:
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
