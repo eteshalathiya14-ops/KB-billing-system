@@ -23,12 +23,15 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Create ZIP of dist folder
+      - name: Create ZIP
         run: zip -r build.zip ./dist
 
-      - name: Save ZIP as Artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload to Google Drive
+        uses: adityak74/google-drive-upload-git-action@main
         with:
-          name: kbbillingapp-build
-          path: build.zip
-          retention-days: 30
+          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+          filename: build.zip
+          folderId: ${{ secrets.GDRIVE_FOLDER_ID }}
+          name: kbbillingapp-build.zip
+          overwrite: "true"
+          encoding: base64
