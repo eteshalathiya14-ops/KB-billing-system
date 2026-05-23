@@ -2,7 +2,7 @@ name: Build and Save
 
 on:
   push:
-    branches: [main]
+    branches: [m-prod]
 
   workflow_dispatch:
 
